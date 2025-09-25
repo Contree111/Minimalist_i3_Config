@@ -1,0 +1,1 @@
+sudo apt install feh mpv polybar xclip xsel rofi terminator i3 cmake* ninja* nb zathura i3lock-fancy
