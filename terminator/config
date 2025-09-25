@@ -1,0 +1,38 @@
+[global_config]
+  always_split_with_profile = True
+[keybindings]
+[profiles]
+  [[default]]
+    font = DepartureMono Nerd Font Propo 11
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    palette = "#000000:#cc0000:#9a9996:#9a9996:#5e5c64:#5e5c64:#5e5c64:#d3d7cf:#555753:#ef2929:#deddda:#deddda:#77767b:#77767b:#77767b:#eeeeec"
+    use_system_font = False
+  [[Gruvbox]]
+    icon_bell = False
+    background_color = "#fbf1c7"
+    font = JetBrainsMonoNL Nerd Font Propo Ultra-Bold Italic 10
+    foreground_color = "#3c3836"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#7c6f64:#928374:#9d0006:#79740e:#b57614:#076678:#8f3f71:#427b58:#3c3836"
+    use_system_font = False
+  [[Retro]]
+    font = DepartureMono Nerd Font 11
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#000000:#cc0000:#9a9996:#9a9996:#5e5c64:#5e5c64:#77767b:#d3d7cf:#555753:#ef2929:#deddda:#deddda:#77767b:#77767b:#9a9996:#eeeeec"
+    custom_command = TERM=xterm-256color bash -l
+    use_system_font = False
+    bold_is_bright = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = Retro
+[plugins]
