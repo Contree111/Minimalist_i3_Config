@@ -8,6 +8,7 @@ Components:
 - Status Bar: polybar
 - Font: DepartureMono Nerd Font
 - Autotiling: nwg-piotr/autotiling
+- Neovim: NvChad
 
 The essentials.txt is what i like to have in my linux config you dont have to install it 
 
