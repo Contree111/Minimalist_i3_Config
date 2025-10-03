@@ -9,6 +9,7 @@ Components:
 - Font: DepartureMono Nerd Font
 - Autotiling: nwg-piotr/autotiling
 - Neovim: NvChad
+- Compositor: ibhagwan/picom
 
 The essentials.txt is what i like to have in my linux config you dont have to install it 
 
