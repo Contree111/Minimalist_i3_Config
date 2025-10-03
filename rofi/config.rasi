@@ -26,7 +26,7 @@
     selected-normal-background:  rgba ( 0, 0, 0, 100 % );    /****************/
     border-color:                @bordercolor;
     spacing:                     2;
-    separatorcolor:              rgba ( 0, 12, 0, 100 % );
+    separatorcolor:              #222222;
     urgent-background:           rgba ( 0, 0, 0, 0 % );
     selected-urgent-background:  rgba ( 255, 160, 160, 100 % );
     alternate-urgent-foreground: @urgent-foreground;
@@ -38,7 +38,7 @@
 window {
     background-color: @background;
     border: 0;
-    padding: 5;
+    padding: 12;
     height: 260;
     width: 550;
     y-offset:50;
@@ -65,7 +65,7 @@ listview {
 }
 element {
     border:  0;
-    padding: 1px ;
+    padding: 0.2em ;
 }
 element-text {
     background-color: inherit;
@@ -133,7 +133,7 @@ case-indicator {
     text-color: @normal-foreground;
 }
 entry {
-    spacing:    0;
+    spacing:    2;
     text-color: @normal-foreground;
 }
 prompt {
@@ -146,9 +146,9 @@ inputbar {
 textbox-prompt-colon {
     expand:     false;
     str:        ":";
-    margin:     0px 0.3em 0em 0em ;
+    margin:     0px 0.4em 0.4em 0.1em ;
     text-color: @normal-foreground;
 }
 configuration{
-    font: "DepartureMono Nerd Font 12";
+    font: "Hack Nerd Font 12";
   }
