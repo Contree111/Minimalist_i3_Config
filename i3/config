@@ -12,10 +12,13 @@ exec --no-startup-id nm-applet
 # Use pactl to adjust volume in PulseAudio.
 #set $refresh_i3status killall -SIGUSR1 i3status
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id sh -c "/home/jesse/.config/i3/volume.sh up"
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+bindsym XF86AudioLowerVolume exec --no-startup-id sh -c "/home/jesse/.config/i3/volume.sh down"
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id sh -c "/home/jesse/.config/i3/volume.sh mute"
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -29,7 +32,7 @@ bindsym $mod+Return exec terminator
 # kill focused window
 bindsym $mod+q kill
 
-bindsym $mod+d exec rofi -normal-window -show drun 
+bindsym $mod+d exec rofi -normal-window -show drun
 
 
 # change focus
@@ -175,59 +178,35 @@ bar {
 }
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+#bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+#bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id sh -c "/home/jesse/.config/i3/brightness.sh up"
 
-#exec --no-startup-id i3-msg 'workspace $ws3; exec terminator'
-exec_always --no-startup-id feh --bg-fill /home/jesse/.config/wallpapers/wallpaper2.png
+bindsym XF86MonBrightnessDown exec --no-startup-id sh -c "/home/jesse/.config/i3/brightness.sh down"
+exec_always --no-startup-id feh --bg-fill /home/jesse/.config/wallpapers/coolmoon.png
+#exec_always --no-startup-id feh --bg-color black
 #exec_always --no-startup-id ~/.config/i3/animated_wallpaper.sh
 
-#exec --no-startup-id i3-msg 'workspace $ws2; exec librewolf'
 bindsym $mod+b exec --no-startup-id brave-browser
 bindsym $mod+Shift+f exec --no-startup-id nemo 
 
 gaps inner 10
 gaps outer 10
-gaps bottom 45
-#smart_gaps off
+gaps bottom 50
 
-default_border pixel 1
+default_border pixel 2
 for_window [class=".*"] border pixel
+
 
 for_window [class="Rofi"] floating enable border pixel
 for_window [class="fl64.exe"] border pixel 1 
 for_window [class="Dunst"] border normal floating enable
 
-#exec --no-startup-id i3-msg 'workspace $ws1'
+
+
 exec --no-startup-id autotiling
+exec --no-startup-id picom
 exec  --no-startup-id xautolock -time 10 -locker "i3lock-fancy"
-# Review the lines below and append to ~/.config/i3/config
 
-## Volume control
 
-# Path to volume control, without trailing slash
-set $volumepath ~/i3-volume
-
-# Command for the status line
-#   ie: i3blocks, i3status
-set $statuscmd i3status
-
-# Signal used to update the status line
-#   i3blocks uses SIGRTMIN+10 by default
-#   i3status uses SIGUSR1 by default
-set $statussig SIGUSR1
-
-# Amount to increase/decrease volume as a percentage
-set $volumestep 5
-
-# pulseaudio-utils settings
-#
-# Symbolic name for sink (numeric index not supported)
-#   Recommended: comment out this setting and omit the -s option to use default sink
-#   List sink names: pacmd list-sinks | awk -F "[<>]" '/^\s+name: <.*>/{print $2}'
-#set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo
-
-# Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
-bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
-bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
-bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+exec --no-startup-id while true; do ~/.config/i3/battery.sh; sleep 60; done
